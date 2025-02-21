@@ -7,120 +7,183 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin: 0;
         }
-        /* Header Styling */
+        /* Parallax Header */
         .header {
-            background: linear-gradient(135deg, #007bff, #00d4ff);
+            position: relative;
+            height: 400px;
+            background: url('https://source.unsplash.com/random/1600x900?tech') no-repeat center center/cover;
             color: white;
-            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
         }
         .header h1 {
-            font-size: 2.5rem;
+            font-family: 'Roboto Slab', serif;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
         }
         /* Profile Image */
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
-            margin-top: -75px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        /* Section Styling */
-        .section {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 4px solid #d4af37;
+            margin-top: -90px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
-        .section:hover {
-            transform: translateY(-5px);
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        /* Navigation */
+        .navbar {
+            background: #2a2a2a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar a {
+            color: #d4af37;
+            font-weight: 600;
+            margin: 0 15px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover {
+            color: #fff;
+        }
+        /* Sections */
+        .section {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
         .section h2 {
-            color: #007bff;
-            font-weight: 600;
-            border-bottom: 2px solid #007bff;
+            font-family: 'Roboto Slab', serif;
+            color: #d4af37;
+            font-weight: 700;
+            border-bottom: 2px solid #d4af37;
             display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1s; }
+        /* Buttons */
+        .btn-premium {
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            background: #fff;
+            color: #1a1a1a;
+            transform: translateY(-2px);
         }
         /* Links */
         a {
-            color: #007bff;
+            color: #d4af37;
             text-decoration: none;
         }
         a:hover {
-            text-decoration: underline;
-            color: #0056b3;
+            color: #fff;
         }
-        /* Buttons */
-        .btn-custom {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
-        }
-        .btn-custom:hover {
-            background-color: #0056b3;
-            color: white;
-        }
-        /* Responsive Adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            .profile-img {
-                width: 120px;
-                height: 120px;
-                margin-top: -60px;
-            }
+            .header h1 { font-size: 2rem; }
+            .profile-img { width: 140px; height: 140px; margin-top: -70px; }
+            .navbar a { margin: 0 10px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container text-center">
+            <a href="#about">About</a>
+            <a href="#career">Career</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#papers">Papers</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
     <!-- Header -->
     <div class="header">
-        <h1>Your Name</h1>
-        <p>Your Tagline (e.g., Software Engineer | AI Researcher | Data Enthusiast)</p>
+        <div class="header-content">
+            <h1>Your Name</h1>
+            <p>Your Tagline (e.g., AI Innovator | Software Architect | Research Enthusiast)</p>
+        </div>
     </div>
 
     <!-- Main Container -->
-    <div class="container mt-4">
+    <div class="container mt-5">
         <!-- Profile Image (Optional) -->
         <div class="text-center">
             <img src="profile.jpg" alt="Your Name" class="profile-img">
         </div>
 
         <!-- About Me -->
-        <div class="section">
+        <div class="section" id="about">
             <h2>About Me</h2>
             <p>
-                Write a brief introduction. For example: "I am a passionate [your profession] with [X years] of experience in [your field]. I specialize in [your skills or interests], and I love building innovative solutions."
+                Write a compelling intro. For example: "I am a visionary [your profession] with [X years] of experience in [your field]. My passion lies in crafting cutting-edge solutions that push the boundaries of [your expertise]."
             </p>
         </div>
 
         <!-- Career Details -->
-        <div class="section">
+        <div class="section" id="career">
             <h2>Career Details</h2>
             <ul class="list-unstyled">
                 <li>
@@ -128,7 +191,7 @@
                     <small>Key responsibility or achievement.</small><br>
                     <small>Another notable contribution.</small>
                 </li>
-                <li class="mt-3">
+                <li class="mt-4">
                     <strong>Job Title</strong> - Company Name (Start Date - End Date)<br>
                     <small>Key responsibility or achievement.</small>
                 </li>
@@ -136,10 +199,36 @@
         </div>
 
         <!-- Rewards & Achievements -->
-        <div class="section">
+        <div class="section" id="achievements">
             <h2>Rewards & Achievements</h2>
             <ul>
                 <li>Award Name - Organization (Year)</li>
                 <li>Achievement Name - Description (Year)</li>
             </ul>
         </div>
+
+        <!-- Published Papers -->
+        <div class="section" id="papers">
+            <h2>Published Papers</h2>
+            <ul>
+                <li><a href="link-to-paper">Paper Title</a> - Journal/Conference Name (Year)</li>
+                <li><a href="link-to-paper">Paper Title</a> - Journal/Conference Name (Year)</li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="section text-center" id="contact">
+            <h2>Contact Me</h2>
+            <p>
+                <i class="fas fa-envelope"></i> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+                <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/your-profile">linkedin.com/in/your-profile</a><br>
+                <i class="fab fa-github"></i> <a href="https://github.com/your-username">github.com/your-username</a>
+            </p>
+            <a href="mailto:your.email@example.com" class="btn btn-premium">Reach Out</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
